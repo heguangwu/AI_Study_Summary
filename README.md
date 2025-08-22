@@ -10,8 +10,11 @@ Some summaries of AI learning
 
 ## `YOLO` 系列教程
 
-### [YOLO算法系列1：训练自己的数据集](./doc/YOLO算法系列1：训练自己的数据集.md)
+### [YOLO算法系列1：训练自己的数据集](./yolo/YOLO算法系列1：训练自己的数据集.md)
 
+## `OpenCV` 系列
+
+### [opencv快速入门](./opencv/opencv快速入门.ipynb)
 
 ## `langchain`系列教程
 
