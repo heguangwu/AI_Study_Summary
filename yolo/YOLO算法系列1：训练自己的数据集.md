@@ -1,4 +1,6 @@
-# `YOLO` 算法
+[TOC]
+
+# `YOLO` 算法系列（1）训练自己的数据集
 
 截止2025年，`YOLO`算法最新版本已经是`YOLO11`，本文重点讲述`YOLOv8`这个我目前用的较多的版本。
 
@@ -38,7 +40,9 @@ val: valid/images
   - 预定义的类别文件为txt格式，每一行为一个类别的名称
 - [`labelme`](https://github.com/wkentaro/labelme)
 
-标注数据完成后，要将数据集划分为训练集和验证集（如8:2）。数据集较多情况下还可以划分一部分数据作为测试集。
+标注数据完成后，要将数据集划分为训练集和验证集（如8:2）。数据集较多情况下还可以划分一部分数据作为测试集（）。
+
+要求：**每个类别文件至少1000以上**
 
 通常情况下，要对训练集进行增广，通常情况下有如下几种方法：
 
@@ -115,11 +119,16 @@ import swanlab
 
 def main():
     swanlab.init(project="your-project", experiment_name="your-project")
-    # 这里是下载好的本地预训练模型文件，不写默认从网上下载，这里也可以用 yolov8.yaml 配置文件
-    # 如果修改了模型参数，这里只能用 yolov8.yaml 配置文件
+    # 方法一：预训练模型文件，这里是下载好的本地文件，默认从网上下载
     model = YOLO("./yolov8n.pt")
+    
+    # 方法二：用修改过后的 yolov8.yaml 配置文件
+    model = YOLO("./yolov8.yaml")
+    # 方法二可选加载预训练权重
+    model.load("./yolov8n.pt")
+
     add_swanlab_callback(model)
-    # 将下面的路径替换成你的绝对路径
+    # 将下面的路径替换成你的绝对路径，其它参数见官方文档
     model.train(data="data.yaml", epochs=100, batch=16)
 
 if __name__ == "__main__":

@@ -10,6 +10,10 @@
 
 ## 总体框架
 
+参考[动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/#/C1/C1?id=_11-%e5%a4%a7%e5%9e%8b%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%ef%bc%88llm%ef%bc%89%e7%ae%80%e4%bb%8b)，`RAG`应用建构流程如下：
+
+![RAG工作流](../img/rag_workflow.png)
+
 要做`RAG`，首先要准备检索数据，检索数据不是一整个文档，那样的话太大，大模型处理整个文档会很慢，消耗也巨大，所以要首先要将文档切分为多个片段，并建立索引，以便后续快速查询。
 
 ### 提问前的知识准备

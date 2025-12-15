@@ -1,4 +1,6 @@
-# `YOLO` 算法
+[TOC]
+
+# `YOLO` 算法系列（2）源码分析
 
 ## `yolov8`架构
 
@@ -55,7 +57,9 @@ head:
 
 ## 源码
 
-入口点：`ultralytics/models/yolo/model.py`
+### 入口点
+
+入口文件：`ultralytics/models/yolo/model.py`
 
 为省略，下面只列出核心代码，且以 `detect` 任务为例
 
@@ -109,3 +113,17 @@ class DetectionModel(BaseModel):
     self.model, self.save = parse_model(deepcopy(self.yaml), ch=ch, verbose=verbose)
 
 ```
+
+在`parse_model`中，依次解析：
+
+- nc: 类别数，通过`nc`获取
+- activation：激活函数，通过`activation`获取
+- scales：选择的模型是哪一个，通过`scale`获取，如无则取第一个模型，模型参数：
+  - depth
+  - width
+  - max_channels
+
+模型框架：
+
+- 依次获取`backbone`和`head`
+  - for i, (f, n, m, args) in enumerate(d["backbone"] + d["head"])

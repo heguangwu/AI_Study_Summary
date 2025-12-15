@@ -6,6 +6,10 @@ Some summaries of AI learning
 
 ## [`RAG`快速入门](./doc/RAG快速入门.md)
 
+## `DataWhale rag` 学习
+
+### [解锁`RAG`](./datawhale_rag_study/Task01.md)
+
 ## [`MCP`教程](./doc/MCP教程.md)
 
 ## `YOLO` 系列教程
